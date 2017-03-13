@@ -1,0 +1,14 @@
+class DashboardController < ApplicationController
+	def index
+	@player = Player.new
+	@player.f_name = "Test"
+	@player.save
+
+	@team = Team.new
+	@team.player_id = @player.id
+	@team.save
+
+	print "=============================================================="
+	print @player.teams.ids
+	end
+end

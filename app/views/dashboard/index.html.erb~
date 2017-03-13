@@ -1,0 +1,8 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Dashboard Under Construction</h1>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

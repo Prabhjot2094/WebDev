@@ -1,0 +1,4 @@
+class Team < ApplicationRecord
+	has_one  :sport
+	has_many :team_lists
+end

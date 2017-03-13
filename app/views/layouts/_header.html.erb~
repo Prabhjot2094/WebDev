@@ -1,0 +1,20 @@
+
+<header>
+  <div>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <h3><%= link_to "LeagueofLegends", root_path , id: "logo" %></h3>
+      <ul class="navbar-nav ml-auto my-2 my-md-0">
+        <li class="nav-item"><%= link_to "Help",   '#' ,:class=> "nav-link"%></li>
+		
+		<% if user_signed_in? %>
+			<!-- Logged in as <strong><%= current_user.email %></strong> -->
+			<li class="nav-item"><%= link_to 'Edit Profile', edit_user_registration_path, :class=> "nav-link" %></li>
+			<li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, method: :delete,:class=> "nav-link"  %></li>
+		<% else %>
+			<li class="nav-item left"><%= link_to "Sign up", new_user_registration_path,:class=> "nav-link"  %></li>
+			<li class="nav-item"><%= link_to "Login", new_user_session_path,:class=> "nav-link"  %></li>
+		<% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
