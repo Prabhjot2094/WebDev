@@ -31,8 +31,11 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-digitalocean'
-gem 'sprockets', '~> 3.0'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'sprockets', '>=3.6.3'
+gem 'jquery-easing-rails'
+gem 'less-rails-bootstrap'
+
+gem "font-awesome-rails"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'

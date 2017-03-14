@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
+//= require jquery.easing
 //= require turbolinks
 //= require_tree .
-//= require jquery
-//= require tether
-//= require bootstrap-sprockets
+
