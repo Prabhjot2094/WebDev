@@ -11,6 +11,8 @@
   <body style="background:#E6E6FA;">
 		<% if user_signed_in? %>
 			<%=render 'layouts/adminTheme'%>
+		<% else %>
+			<%= render 'layouts/header'%>
 		<%end%>
   <%= yield %>
   </body>
