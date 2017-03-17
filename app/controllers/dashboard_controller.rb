@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
 		def index
 		end
 		
-		def chkCredentials
+		def signIn
 			print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 			print params[:password]
 			user = User.find_for_authentication(:email => params[:email])

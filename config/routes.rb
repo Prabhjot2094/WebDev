@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post 'dashboard/chkCredentials' => 'dashboard#chkCredentials'
+  post 'dashboard/signIn' => 'dashboard#signIn'
   post 'application/chkCredentials' => 'application#chkCredentials'
   
   devise_for :users
