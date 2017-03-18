@@ -11,7 +11,6 @@
   <body style="background:#E6E6FA;">
 		<% if user_signed_in? %>
 			<%=render 'layouts/adminTheme'%>
-		<%end%>
 		<% else %>
 			<%= render 'layouts/header'%>
 		<%end%>

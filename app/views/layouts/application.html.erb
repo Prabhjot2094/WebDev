@@ -9,11 +9,13 @@
   </head>
 
   <body style="background:#E6E6FA;">
+      <div id="wrapper">
 		<% if user_signed_in? %>
 			<%=render 'layouts/adminTheme'%>
 		<% else %>
 			<%= render 'layouts/header'%>
 		<%end%>
   <%= yield %>
+  </div>
   </body>
 </html>
