@@ -1,4 +1,4 @@
-    <div id="wrapper">
+    <div class="toggled" id="wrapper">
 
 		        <!-- Sidebar -->
 		        <div id="sidebar-wrapper">
@@ -12,7 +12,7 @@
 		                    <a href="#">Dashboard</a>
 		                </li>
 		                <li>
-		                    <a href="#">Shortcuts</a>
+		                    <a href="/my_teams/new">My Teams</a>
 		                </li>
 		                <li>
 		                    <a href="#">Overview</a>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'application/chkCredentials' => 'application#chkCredentials'
   
   devise_for :users
-  resources :dashboard
+  resources :dashboard,:my_teams
   root 'dashboard#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -7,13 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body style="background:#E6E6FA;">
+  <!-- #E6E6FA -->
+  <body style="background:#ffffff;">
+      <div id="wrapper">
 		<% if user_signed_in? %>
 			<%=render 'layouts/adminTheme'%>
 		<% else %>
 			<%= render 'layouts/header'%>
 		<%end%>
   <%= yield %>
+  </div>
   </body>
 </html>
