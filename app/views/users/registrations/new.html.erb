@@ -4,9 +4,11 @@
 	<%= devise_error_messages! %>
 
 
-	<%= f.fields_for :players do |p| %>
-	<%= p.label :user_name %><br />
-	<%= p.text_field :user_name %>
+<%=f.fields_for :player do |p| %>
+	<p>
+<%= p.label :user_name %><br />
+<%= p.text_field :user_name %>
+</p>
   <%end%>
 <div class="field">
 	<%= f.label :email %><br />

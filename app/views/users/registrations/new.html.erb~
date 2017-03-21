@@ -4,9 +4,11 @@
 	<%= devise_error_messages! %>
 
 
-	<%= f.fields_for :players do |p| %>
-	<%= p.label :user_name %><br />
-	<%= p.text_field :user_name %>
+<%=f.fields_for :player do |p| %>
+	<p>
+<%= p.label :user_name %><br />
+<%= p.text_field :user_name %>
+</p>
   <%end%>
 <div class="field">
 	<%= f.label :email %><br />
@@ -16,7 +18,7 @@
 <div class="field">
 	<%= f.label :password %>
 	<% if @minimum_password_length %>
-		<em>(<%= @minimum_password_length %> characters minimum)</em>
+		<em>(<%= @minimum_password_length %> charactedddddddddddrs minimum)</em>
 <% end %><br />
 	<%= f.password_field :password, autocomplete: "off" %>
 </div>
