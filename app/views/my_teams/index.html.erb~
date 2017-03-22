@@ -5,12 +5,14 @@
 		<div class="panel-heading">
 			<a href=<%= edit_my_team_path(Team.find(team).id)%> style="color:#ffffff;">
 			<div class="row">
-				<div class="col-xs-3">
-					<h3><%=Team.find(team).sport_id%></h3>
+				<div class="col-xs-8" style="padding-left:10px;padding-right:0px;">
+					<div class="top"><h2 style="margin:5px; word-wrap: break-word;"><%=Team.find(team).sport_id%></h2></div>
+					<div><h3 style="margin:5px; margin-top:25px"><%=Team.find(team).team_name%></h3></div>
 				</div>
-				<div class="col-xs-9 text-right">
-					<div class="huge"><%=Team.find(team).no_of_players.to_i %></div>
+				<div class="col-xs-4 text-right">
+					<div><h2 style="margin:5px; margin-bottom: 0px"><%=Team.find(team).no_of_players.to_i%></h2></div>
 					<div>Members</div>
+					<div style="margin:5px; margin-top: 10px"><%=Team.find(team).location%></div>
 				</div>
 			</div>
 		</a>
@@ -22,7 +24,7 @@
 				<div class="clearfix"></div>
 			</div>
 		</a>
-		<a href=<%=my_team_path(id:Team.find(team).id)%> method="delete">
+		<a href=<%=my_team_path(id:Team.find(team).id)%> data-method="delete">
 			<div class="panel-footer">
 				<span class="pull-left">Delete Team</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

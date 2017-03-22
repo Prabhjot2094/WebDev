@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322041249) do
+ActiveRecord::Schema.define(version: 20170322064600) do
 
   create_table "players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170322041249) do
     t.datetime "updated_at",    null: false
     t.integer  "player_id"
     t.string   "no_of_players"
+    t.string   "location"
     t.index ["player_id"], name: "index_teams_on_player_id", using: :btree
   end
 

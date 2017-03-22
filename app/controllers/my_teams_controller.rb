@@ -1,5 +1,4 @@
 class MyTeamsController < ApplicationController
-
 	def index
 		@team = current_user.player.team_ids
 	end
@@ -15,6 +14,7 @@ class MyTeamsController < ApplicationController
 		if @team.save 
 			redirect_to my_teams_path
 			flash[:success] = "Succesful"
+			return
 		else
 			flash[:danger] = "Failure"
 			render 'new'
@@ -22,10 +22,16 @@ class MyTeamsController < ApplicationController
 	end
 
 	def edit
-		@team = current_user.player.teams.find(params[:id])
+		begin
+			@team = current_user.player.teams.find(params[:id])
+		rescue
+			redirect_to my_teams_path
+			return
+		end
 
 		if @team.nil?
-			redirect_to '/dashboard/index'
+			redirect_to '/dashboard'
+			return
 		end
 	end
 
@@ -58,7 +64,7 @@ class MyTeamsController < ApplicationController
 
 
 	def params_team
-		params.require(:team).permit(:team_name, :sport_id ,:no_of_players)
+		params.require(:team).permit(:team_name, :sport_id ,:no_of_players, :location)
 	end
 
 end
