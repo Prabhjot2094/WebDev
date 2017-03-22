@@ -11,7 +11,7 @@
 				</div>
 				<div class="col-xs-4 text-right">
 					<div><h2 style="margin:5px; margin-bottom: 0px"><%=Team.find(team).no_of_players.to_i%></h2></div>
-					<div>Members</div>
+					<div>Players</div>
 					<div style="margin:5px; margin-top: 10px"><%=Team.find(team).location%></div>
 				</div>
 			</div>

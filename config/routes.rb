@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   post 'dashboard/signIn' => 'dashboard#signIn'
   post 'application/chkCredentials' => 'application#chkCredentials'
-  
+  get 'my_teams/matchedTeams' => 'my_teams#matchedTeams'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :dashboard,:my_teams
   root 'dashboard#index'

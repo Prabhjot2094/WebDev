@@ -35,6 +35,7 @@ gem 'sprockets', '>=3.6.3'
 gem 'jquery-easing-rails'
 gem 'less-rails-bootstrap'
 
+gem 'google_directions'
 gem "font-awesome-rails"
 
 source 'https://rails-assets.org' do

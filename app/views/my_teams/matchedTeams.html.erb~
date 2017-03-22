@@ -18,7 +18,6 @@
 				<td><%=f[:no_of_players]%></td>
 				<td><%=f[:location]%></td>
 			</tr>
-			<%end%>
 			</tbody>
 		</table>
 	</div>

@@ -62,7 +62,10 @@ class MyTeamsController < ApplicationController
 		redirect_to my_teams_path
 	end
 
-
+	def matchTeams
+		@matchedTeams = Team.match_teams("Delhi")
+	end
+	
 	def params_team
 		params.require(:team).permit(:team_name, :sport_id ,:no_of_players, :location)
 	end
