@@ -1,31 +1,45 @@
-<div class="row">
+<%@team.each do |team|%>
+
 	<div class="col-lg-3 col-md-6">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-xs-3">
-						<h3>Cricket</h3>
-					</div>
-					<div class="col-xs-9 text-right">
-						<div class="huge">16</div>
-						<div>Members</div>
-					</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<a href=<%= edit_my_team_path(Team.find(team).id)%> style="color:#ffffff;">
+			<div class="row">
+				<div class="col-xs-3">
+					<h3><%=Team.find(team).sport_id%></h3>
+				</div>
+				<div class="col-xs-9 text-right">
+					<div class="huge"><%=Team.find(team).no_of_players.to_i %></div>
+					<div>Members</div>
 				</div>
 			</div>
-			<a href="#">
-				<div class="panel-footer">
-					<span class="pull-left">Edit Team</span>
-					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-					<div class="clearfix"></div>
-				</div>
-			</a>
-			<a href="#">
-				<div class="panel-footer">
-					<span class="pull-left">Match Opponents</span>
-					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-					<div class="clearfix"></div>
-				</div>
-			</a>
+		</a>
 		</div>
+		<a href='#'>
+			<div class="panel-footer">
+				<span class="pull-left">Match Opponents</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>
+			</div>
+		</a>
+		<a href=<%=my_team_path(id:Team.find(team).id)%> method="delete">
+			<div class="panel-footer">
+				<span class="pull-left">Delete Team</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>
+			</div>
+		</a>
+	</div>
+</div>
+<%end%>
+<div class="col-lg-3 col-md-6">
+	<div class="panel">
+		<div class="panel-heading">
+	<div class="row center">
+		<a href='/my_teams/new'>
+			<span class="glyphicon glyphicon-plus-sign huge"></span>
+		</a>
+	</div>
+	</div>
 	</div>
 </div>

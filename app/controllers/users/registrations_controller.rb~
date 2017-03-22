@@ -23,6 +23,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	 super
 	 if not user_signed_in?
 	 	@player.destroy
+	 else
+		 @player.update_attribute(:user_id,(current_user.id).to_s)
 	 end
 
 	end

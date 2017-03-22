@@ -15,4 +15,7 @@
  *= require_tree .
  *= require_self
 */
-
+.glyphicon {
+    font-size: 100px;
+	color: #5cb85c;
+}

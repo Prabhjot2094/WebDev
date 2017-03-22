@@ -1,4 +1,4 @@
-class AddPlayerRefToTeam < ActiveRecord::Migration[5.0]
+class AddPlayerReferenceToTeams < ActiveRecord::Migration[5.0]
   def change
     add_reference :teams, :player, foreign_key: true
   end
