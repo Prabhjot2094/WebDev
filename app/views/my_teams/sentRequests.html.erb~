@@ -13,11 +13,13 @@
 			<tbody>
 			<%@sentRequests.each do |r|%>
 				<tr>
-					<%f = Team.find(f.request_to)%>
-				<td><%=f[:team_name]%></td>
-				<td><%=f[:sport_id]%></td>
-				<td><%=f[:no_of_players]%></td>
-				<td><%=f[:location]%></td>
+					<%to_id = Team.find(r.request_to)%>
+					<%from_id = Team.find(r.request_from)%>
+				<td><%=from_id[:team_name]%></td>
+				<td><%=to_id[:team_name]%></td>
+				<td><%=to_id[:sport_id]%></td>
+				<td><%=to_id[:no_of_players]%></td>
+				<td><%=to_id[:location]%></td>
 				<td><a href=<%=my_teams_deleteRequest_path(id: r.id)%>><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
 			</tr>
 			<%end%>

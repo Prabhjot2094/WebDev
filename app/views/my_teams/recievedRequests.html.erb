@@ -4,7 +4,8 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Team Name</th>
+					<th>To</th>
+					<th>From</th>
 					<th>Sport</th>
 					<th>No. of Players</th>
 					<th>Location</th>
@@ -13,11 +14,13 @@
 			<tbody>
 			<%@recievedRequests.each do |r|%>
 				<tr>
-					<%f = Team.find(r.request_from)%>
-				<td><%=f[:team_name]%></td>
-				<td><%=f[:sport_id]%></td>
-				<td><%=f[:no_of_players]%></td>
-				<td><%=f[:location]%></td>
+					<%to_id = Team.find(r.request_to)%>
+					<%from_id = Team.find(r.request_from)%>
+				<td><%=to_id[:team_name]%></td>
+				<td><%=from_id[:team_name]%></td>
+				<td><%=from_id[:sport_id]%></td>
+				<td><%=from_id[:no_of_players]%></td>
+				<td><%=from_id[:location]%></td>
 				<td><a href=<%=my_teams_acceptRequest_path(id: r.id)%>><button type="button" class="btn btn-primary btn-sm">Accept</button></a></td>
 				<td><a href=<%=my_teams_deleteRequest_path(id: r.id)%>><button type="button" class="btn btn-danger btn-sm">Reject</button></a></td>
 			</tr>

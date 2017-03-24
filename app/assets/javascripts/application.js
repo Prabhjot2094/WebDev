@@ -16,8 +16,3 @@
 //= require jquery.easing
 //= require turbolinks
 //= require_tree .
-$(document).ready(function($) {
-		    $(".table-row").click(function() {
-				        window.document.location = $(this).data("href");
-						    });
-			});

@@ -132,8 +132,7 @@ class MyTeamsController < ApplicationController
 	def destroyAllRequests(request)
 		request.each do |r|
 			begin
-				r.destroy
-			rescue
+
 				next
 			end
 		end	
