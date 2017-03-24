@@ -1,5 +1,5 @@
 <div class="col-lg-6">
-	<h2>Nearby Teams</h2>
+	<h2>Requests Sent</h2>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
 			<thead>
@@ -11,13 +11,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%@matchedTeams.each do |f|%>
-			<tr>
+			<%@sentRequests.each do |r|%>
+				<tr>
+					<%f = Team.find(r.request_to)%>
 				<td><%=f[:team_name]%></td>
 				<td><%=f[:sport_id]%></td>
 				<td><%=f[:no_of_players]%></td>
 				<td><%=f[:location]%></td>
-				<td><a href=<%=my_teams_saveRequest_path(req_to:f[:id], req_from: @teamId)%>><button type="button" class="btn btn-primary btn-sm">Send Request</button></a></td>
+				<td><a href=<%=my_teams_deleteRequest_path(id: r.id)%>><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
 			</tr>
 			<%end%>
 			</tbody>

@@ -17,5 +17,8 @@
 */
 .glyphicon {
     font-size: 100px;
-	color: 'Green';
+	color: #5cb85c;
+}
+.table-row{
+cursor:pointer;
 }

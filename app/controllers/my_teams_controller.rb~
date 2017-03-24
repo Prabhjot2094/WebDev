@@ -48,6 +48,12 @@ class MyTeamsController < ApplicationController
 	def destroy
 		@team = current_user.player.teams.find(params[:id])
 
+		request_to = Request.where(request_to: params[:id])
+		request_from = Request.where(request_from: params[:id])
+
+		destroyAllRequests(request_to)
+		destroyAllRequests(request_from)
+
 		if !@team.nil?
 			if @team.destroy
 				flash[:success] = "Deletion Successful"
@@ -62,10 +68,77 @@ class MyTeamsController < ApplicationController
 		redirect_to my_teams_path
 	end
 
-	def matchTeams
-		@matchedTeams = Team.match_teams("Delhi")
+	def matchedTeams
+		@teamId = params[:id]
+		@team = current_user.player.teams.find(params[:id])
+		@matchedTeams = Team.match_teams(@team.location, @team.sport_id, @team.player_id)
+	end
+
+	def saveRequest
+		@request = Request.new
+
+		@request.request_to = params[:req_to]
+		@request.request_from = params[:req_from]
+		@request.status = "0"
+
+		if @request.save
+			redirect_to my_teams_sentRequests_path
+		else
+			redirect_to my_teams_path
+		end
+	end
+
+	def acceptRequest
+		request = Request.find(params[:id])
+
+		if request.update_attributes(status: 1)
+			redirect_to my_teams_acceptedRequests_path
+		else
+			redirect_to my_teams_recievedRequests_path
+		end
+	end
+
+	def deleteRequest
+		request = Request.find(params[:id])
+
+		if !request.nil?
+			if request.destroy
+				flash[:success] = "Deletion Successful"
+			else
+				flash[:danger] = "Unable to delete Request"
+			end
+		else
+			flash[:danger] = "No Request Found"
+			redirect_to my_teams_acceptedRequests_path
+			return
+		end
+		redirect_to my_teams_acceptedRequests_path
+	end
+
+	def sentRequests
+		@sentRequests = Request.where(request_from: current_user.player.team_ids, status: "0")
+	end
+
+	def recievedRequests
+		@recievedRequests = Request.where(request_to: current_user.player.team_ids, status: "0")
 	end
 	
+	def acceptedRequests
+		teamIds = current_user.player.team_ids
+		@acceptedSentRequests = Request.where(request_from: teamIds, status: "1")
+		@acceptedRecievedRequests = Request.where( request_to: teamIds, status: "1")
+	end
+
+	def destroyAllRequests(request)
+		request.each do |r|
+			begin
+				r.destroy
+			rescue
+				next
+			end
+		end	
+	end
+
 	def params_team
 		params.require(:team).permit(:team_name, :sport_id ,:no_of_players, :location)
 	end
