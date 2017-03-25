@@ -16,3 +16,4 @@
 //= require jquery.easing
 //= require turbolinks
 //= require_tree .
+

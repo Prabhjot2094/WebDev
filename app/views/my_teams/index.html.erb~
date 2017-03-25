@@ -1,23 +1,27 @@
-<%@team.each do |team|%>
+<%i=1
+@team.each do |team|%>
 
-	<div class="col-lg-3 col-md-6">
+<div class="col-lg-3 col-md-6">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<a href=<%= edit_my_team_path(Team.find(team).id)%> style="color:#ffffff;">
-			<div class="row">
-				<div class="col-xs-8" style="padding-left:10px;padding-right:0px;">
-					<div class="top"><h2 style="margin:5px; word-wrap: break-word;"><%=Team.find(team).sport_id%></h2></div>
-					<div><h3 style="margin:5px; margin-top:25px"><%=Team.find(team).team_name%></h3></div>
+				<div class="row">
+					<div class="col-xs-6" style="padding-left:5px;padding-right:0px;">
+						<div class="top" id="cardTextParent<%=i%>" style="padding-bottom:20px"><span id="cardText<%=i%>" style="margin:5px; font-size:25px"><%=Team.find(team).sport_id%></span></div>
+					</div>
+					<div class="col-xs-6 text-right" style="padding-right:5px;">
+						<div id="cardTextParent<%=i+1%>" ><span id="cardText<%=i+1%>" style="margin:0px; margin-bottom: 0px; font-size:25px"><%=Team.find(team).no_of_players.to_i%><span style="font-size:15px;"> players</span></span></div>
+					</div>
 				</div>
-				<div class="col-xs-4 text-right">
-					<div><h2 style="margin:5px; margin-bottom: 0px"><%=Team.find(team).no_of_players.to_i%></h2></div>
-					<div>Players</div>
-					<div style="margin:5px; margin-top: 10px"><%=Team.find(team).location%></div>
+				<div class="row">
+					<div class="col-xs-9" style="padding-left:5px;padding-right:0px;">
+						<div id="cardTextParent<%=i+2%>" ><span id="cardText<%=i+2%>" style="margin:5px; font-size:25px"><%=Team.find(team).team_name%>(<%=Team.find(team).location%>)</span></div>
+					<%i+=3%>
+					</div>
 				</div>
-			</div>
-		</a>
+			</a>
 		</div>
-		<a href=<%=my_team_matchedTeams_path(id:Team.find(team).id)%>>
+		<a href=<%=my_teams_matchedTeams_path(id:Team.find(team).id)%>>
 			<div class="panel-footer">
 				<span class="pull-left">Match Opponents</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -37,11 +41,27 @@
 <div class="col-lg-3 col-md-6">
 	<div class="panel">
 		<div class="panel-heading">
-	<div class="row center">
-		<a href='/my_teams/new'>
-			<span class="glyphicon glyphicon-plus-sign huge"></span>
-		</a>
-	</div>
-	</div>
+			<div class="row center">
+				<a href='/my_teams/new'>
+					<span class="glyphicon glyphicon-plus-sign huge"></span>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
+<script>
+var ids = document.querySelectorAll('[id^="cardTextParent"]').length;
+
+for(i=1 ; i<=ids ; i++){
+		var divWidth = $("#cardTextParent"+i).width();
+		var text = $("#cardText"+i);
+		var fontSize = 20;
+
+		while (text.width() > divWidth)
+			text.css("font-size", fontSize -=0.2);
+		text.css("display", "inline");
+	}
+
+</script>
+
+

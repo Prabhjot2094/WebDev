@@ -8,12 +8,13 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <!-- #E6E6FA -->
-<body style="background:#ffffff;">
-<div id="wrapper">
+<body style="background-image:<%=image_url('homePage.jpg')%>;" >
+<div id="wrapper" >
 	<% if user_signed_in? %>
 		<%=render 'layouts/adminTheme'%>
 <% else %>
 		<%= render 'layouts/header'%>
+<%end%>
 
 	<div id="page-wrapper">
 		<div class="container-fluid">

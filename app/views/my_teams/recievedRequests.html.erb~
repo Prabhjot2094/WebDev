@@ -1,3 +1,4 @@
+<%if !@recievedRequests.empty?%>
 <div class="col-lg-7">
 	<h2>Requests Recieved</h2>
 	<div class="table-responsive">
@@ -18,7 +19,6 @@
 					<%from_id = Team.find(r.request_from)%>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=from_id[:team_name]%></td>
-				<td><%=from_id[:team_name]%></td>
 				<td><%=from_id[:sport_id]%></td>
 				<td><%=from_id[:no_of_players]%></td>
 				<td><%=from_id[:location]%></td>
@@ -30,3 +30,6 @@
 		</table>
 	</div>
 </div>
+<%else%>
+	<h3>Nothing As Of Now</h3>
+<%end%>

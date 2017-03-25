@@ -8,7 +8,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">SB Admin</a>
+		<a class="navbar-brand" href="/dashboard">Jon Doe</a>
 	</div>
 	<!-- Top Menu Items -->
 	<ul class="nav navbar-right top-nav">
@@ -116,13 +116,13 @@
 			<li class="<%=@highlightHash["my_teams"]%>">
 			<a href="/my_teams" ><i class="fa fa-fw fa-bar-chart-o"></i>My Teams</a>
 			</li>
-			<li class="<%=@highlightHash["my_teams"]%>">
+			<li class="<%=@highlightHash["sentRequests"]%>">
 			<a href="/my_teams/sentRequests"><i class="fa fa-fw fa-table"></i> Sent Requests</a>
 			</li>
-			<li class="<%=@highlightHash["my_teams"]%>">
+			<li class="<%=@highlightHash["recievedRequests"]%>">
 			<a href="/my_teams/recievedRequests"><i class="fa fa-fw fa-edit"></i> Recieved Requests</a>
 			</li>
-			<li class="<%=@highlightHash["my_teams"]%>">
+			<li class="<%=@highlightHash["acceptedRequests"]%>">
 			<a href="/my_teams/acceptedRequests"><i class="fa fa-fw fa-desktop"></i> Accepted Requests</a>
 			</li>
 			<li>

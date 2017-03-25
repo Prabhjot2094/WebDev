@@ -1,3 +1,4 @@
+<%if !@acceptedSentRequests.empty?%>
 <div class="col-lg-6">
 	<h2>Sent Requests Accepted</h2>
 	<div class="table-responsive">
@@ -24,6 +25,8 @@
 		</table>
 	</div>
 </div>
+<%end%>
+<%if !@acceptedRecievedRequests.empty?%>
 <div class="col-lg-6">
 	<h2>Recieved Requests Accepted</h2>
 	<div class="table-responsive">
@@ -50,3 +53,7 @@
 		</table>
 	</div>
 </div>
+<%end%>
+<%if @acceptedSentRequests.empty? and @acceptedRecievedRequests.empty?%>
+	<h3>No-one gives a fuck about your Requests !!!!!</h3>
+<%end%>

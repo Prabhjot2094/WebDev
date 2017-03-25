@@ -16,8 +16,14 @@
 //= require jquery.easing
 //= require turbolinks
 //= require_tree .
-$(document).ready(function($) {
-		    $(".table-row").click(function() {
-				        window.document.location = $(this).data("href");
-						    });
-			});
+
+var divWidth = $("#cardTextParent").width();
+var text = $("#cardText");
+var fontSize = 12;
+
+javascript:alert(divWidth);
+
+while (text.width() > divWidth)
+	  text.css("font-size", fontSize -= 0.5);
+	  
+text.css("display", "inline");

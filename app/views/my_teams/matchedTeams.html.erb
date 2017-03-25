@@ -1,3 +1,4 @@
+<%if !@matchedTeams.empty?%>
 <div class="col-lg-6">
 	<h2>Nearby Teams</h2>
 	<div class="table-responsive">
@@ -24,3 +25,6 @@
 		</table>
 	</div>
 </div>
+<%else%>
+	<h3>No Nearby Teams</h3>
+<%end%>

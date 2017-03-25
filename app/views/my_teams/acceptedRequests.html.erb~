@@ -1,3 +1,4 @@
+<%if !@acceptedSentRequests.empty?%>
 <div class="col-lg-6">
 	<h2>Sent Requests Accepted</h2>
 	<div class="table-responsive">
@@ -17,13 +18,15 @@
 				<td><%=from_id[:team_name]%></td>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=to_id[:sport_id]%></td>
-				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-primary btn-sm">Delete</button></a></td>
+				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
 			</tr>
 			<%end%>
 			</tbody>
 		</table>
 	</div>
 </div>
+<%end%>
+<%if !@acceptedRecievedRequests.empty?%>
 <div class="col-lg-6">
 	<h2>Recieved Requests Accepted</h2>
 	<div class="table-responsive">
@@ -43,10 +46,14 @@
 				<td><%=from_id[:team_name]%></td>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=from_id[:sport_id]%></td>
-				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-red btn-sm"> Cancel</button></a></td>
+				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-danger btn-sm"> Cancel</button></a></td>
 			</tr>
 			<%end%>
 			</tbody>
 		</table>
 	</div>
 </div>
+<%end%>
+<%if @acceptedSentRequests.empty? and @acceptedRecievedRequests.empty?%>
+	<h3>Nothing As Of Now</h3>
+<%end%>

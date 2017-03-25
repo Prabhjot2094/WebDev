@@ -17,7 +17,7 @@
 				<td><%=f[:sport_id]%></td>
 				<td><%=f[:no_of_players]%></td>
 				<td><%=f[:location]%></td>
-				<td><a href=<%=my_teams_saveRequests_path(req_to:f[:id], req_from: @teamId)%>><button type="button" class="btn btn-primary btn-sm">Send Request</button></a></td>
+				<td><a href=<%=my_teams_saveRequest_path(req_to:f[:id], req_from: @teamId)%>><button type="button" class="btn btn-primary btn-sm">Send Request</button></a></td>
 			</tr>
 			<%end%>
 			</tbody>
