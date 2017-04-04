@@ -1,21 +1,22 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-4">
-	  <%= form_for(@team , url:"#{path}") do |f| %>
-		
+	  <%= form_for(@team , url:"#{path}", class:"form-horizontal") do |f| %>
+
+		  <div class="form-group">	  
       <%= f.label :team_name, "Team Name" %>
-      <%= f.text_field :team_name, class: "form-control" %>
+      <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
 
       <%= f.label :sport_id, "Team Sport" %>
-      <%= f.text_field :sport_id, class: "form-control" %>
+      <%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
 		
       <%= f.label :no_of_players, "No. of Players" %>
-      <%= f.text_field :no_of_players, class: "form-control" %>
+      <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
 	  
       <%= f.label :location, "Location" %>
-      <%= f.text_field :location, class: "form-control" %>
+      <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
 	  
 	  <%= f.submit "#{button}", class: "btn btn-primary" %>
-
+	  </div>
     <% end %>
   </div>
 </div>

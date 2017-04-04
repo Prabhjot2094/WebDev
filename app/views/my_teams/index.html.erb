@@ -1,8 +1,8 @@
 <%i=1
 @team.each do |team|%>
 
-<div class="col-lg-3 col-md-6">
-	<div class="panel panel-primary">
+<div class="col-lg-3 col-xs-6">
+	<div class="panel panel-primary opacity7">
 		<div class="panel-heading">
 			<a href=<%= edit_my_team_path(Team.find(team).id)%> style="color:#ffffff;">
 				<div class="row">
@@ -39,11 +39,11 @@
 </div>
 <%end%>
 <div class="col-lg-3 col-md-6">
-	<div class="panel">
+	<div class="panel transparent opacity7">
 		<div class="panel-heading">
 			<div class="row center">
 				<a href='/my_teams/new'>
-					<span class="glyphicon glyphicon-plus-sign huge"></span>
+					<span class="glyphicon glyphicon-plus huge"></span>
 				</a>
 			</div>
 		</div>

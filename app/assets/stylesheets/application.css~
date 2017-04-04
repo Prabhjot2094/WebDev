@@ -19,6 +19,20 @@
     font-size: 100px;
 	color: #5cb85c;
 }
-.table-row{
-cursor:pointer;
+
+.opacity7{
+	opacity:1;
+}
+.opacity1{
+	opacity:1;
+}
+.table{
+	opacity:0.8;
+	background-color:#ffffff;
+}
+.transparent{
+	background-color:transparent;
+}
+.white-background{
+	background-color:#ffffff;
 }

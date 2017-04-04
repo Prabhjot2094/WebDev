@@ -3,11 +3,12 @@
 	<h2>Sent Requests Accepted</h2>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
-			<thead>
+			<thead class="opacity7">
 				<tr>
 					<th>From</th>
 					<th>To</th>
 					<th>Sport</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,8 +28,10 @@
 </div>
 <%end%>
 <%if !@acceptedRecievedRequests.empty?%>
-<div class="col-lg-6">
-	<h2>Recieved Requests Accepted</h2>
+	<div class="col-lg-6">
+		<div class="wrapper">
+		<h2>Recieved Requests Accepted</h2>
+		</div>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
 			<thead>
@@ -36,6 +39,7 @@
 					<th>From</th>
 					<th>To</th>
 					<th>Sport</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
