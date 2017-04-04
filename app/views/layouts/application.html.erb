@@ -9,21 +9,24 @@
 </head>
 <!-- #E6E6FA -->
 <body style="background:#ffffff;" >
-<div id="wrapper" >
 	<% if user_signed_in? %>
+		<div id="wrapper" >
 		<%=render 'layouts/adminTheme'%>
-<% else %>
+	<% else %>
 		<%= render 'layouts/header'%>
-<%end%>
+	<%end%>
 
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<% flash.each do |name, msg| %>
 				<% content_tag :div, msg, class: "alert alert-info" %>
-			<% end %>
+		<% end %>
 			<%= yield %>
 		</div>
 	</div>
-</div>
+
+	<% if user_signed_in? %>
+		</div>
+	<%end%>
 </body>
 </html>
