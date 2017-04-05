@@ -11,19 +11,5 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
-//= require jquery.easing
-//= require turbolinks
 //= require_tree .
 
-var divWidth = $("#cardTextParent").width();
-var text = $("#cardText");
-var fontSize = 12;
-
-javascript:alert(divWidth);
-
-while (text.width() > divWidth)
-	  text.css("font-size", fontSize -= 0.5);
-	  
-text.css("display", "inline");

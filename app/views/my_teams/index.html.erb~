@@ -42,33 +42,15 @@
 	<div class="panel transparent opacity7">
 		<div class="panel-heading">
 			<div class="row center">
-				<a href='/my_teams/new'>
+				<a href="/my_teams/new">
 					<span class="glyphicon glyphicon-plus huge"></span>
 				</a>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
+<li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li>
 
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Modal Header</h4>
-		        </div>
-		        <div class="modal-body">
-		          <p>Some text in the modal.</p>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		      </div>
-
-			    </div>
-			</div>
 <script>
 var ids = document.querySelectorAll('[id^="cardTextParent"]').length;
 
@@ -82,6 +64,9 @@ for(i=1 ; i<=ids ; i++){
 		text.css("display", "inline");
 	}
 
+$('#sign').click(function(){
+<%=render 'team_details',button: 'Update', path: my_teams_path%>
+});
 </script>
 
 

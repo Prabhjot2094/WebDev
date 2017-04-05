@@ -1,8 +1,7 @@
 class MyTeamsController < ApplicationController
 	def index
 		@team = current_user.player.team_ids
-		print "##############################"
-		print request.original_url()
+		@newTeam = Team.new
 	end
 
 	def new
@@ -24,6 +23,7 @@ class MyTeamsController < ApplicationController
 	end
 
 	def edit
+		return
 		begin
 			@team = current_user.player.teams.find(params[:id])
 		rescue
@@ -119,33 +119,22 @@ class MyTeamsController < ApplicationController
 
 	def sentRequests
 		@sentRequests = Request.where(request_from: current_user.player.team_ids, status: "0")
-		print "##############################"
-		print request.original_url()
 	end
 
 	def recievedRequests
 		@recievedRequests = Request.where(request_to: current_user.player.team_ids, status: "0")
-		print "##############################"
-		print request.original_url()
 	end
 	
 	def acceptedRequests
-		url = request.original_url()
-		url = url.split('/')
-		highlightHash[url[-1]] = "active"
-
 		teamIds = current_user.player.team_ids
 		@acceptedSentRequests = Request.where(request_from: teamIds, status: "1")
 		@acceptedRecievedRequests = Request.where( request_to: teamIds, status: "1")
-		print "##############################"
-		print request.original_url()
 	end
 
 	def destroyAllRequests(request)
 		request.each do |r|
 			begin
-				r.destroy
-			rescue
+
 				next
 			end
 		end	

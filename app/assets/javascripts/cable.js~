@@ -11,3 +11,10 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+
+$(document).ready(function(){
+		$("#editModal").modal('show');
+		});
+
+

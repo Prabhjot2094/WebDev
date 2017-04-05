@@ -1,6 +1,7 @@
 class MyTeamsController < ApplicationController
 	def index
 		@team = current_user.player.team_ids
+		@newTeam = Team.new
 	end
 
 	def new

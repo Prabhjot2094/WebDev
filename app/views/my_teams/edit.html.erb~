@@ -1,1 +1,7 @@
-<%=render 'team_details',button: 'Update'%>
+<%=render 'team_details',button: 'Update', path: my_team_path%>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#editModal").modal('show');
+    });
+</script>
