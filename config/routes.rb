@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'my_teams/acceptedRequests' => 'my_teams#acceptedRequests'
   get 'my_teams/acceptRequest' => 'my_teams#acceptRequest'
   get 'my_teams/deleteRequest' => 'my_teams#deleteRequest'
+  get 'my_teams/getEditDetails' => 'my_teams#getEditDetails'
   
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :dashboard,:my_teams

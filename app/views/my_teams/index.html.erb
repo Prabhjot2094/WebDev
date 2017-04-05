@@ -4,7 +4,7 @@
 <div class="col-lg-3 col-xs-6">
 	<div class="panel panel-primary opacity7">
 		<div class="panel-heading">
-			<a href=<%= edit_my_team_path(Team.find(team).id)%> style="color:#ffffff;">
+			<a id="editLink" href="#" onclick="editForm(<%=Team.find(team).id%>, '<%=edit_my_team_path(Team.find(team).id)%>');" style="color:#ffffff;" data-toggle="modal" data-target="#login">
 				<div class="row">
 					<div class="col-xs-6" style="padding-left:5px;padding-right:0px;">
 						<div class="top" id="cardTextParent<%=i%>" style="padding-bottom:20px"><span id="cardText<%=i%>" style="margin:5px; font-size:25px"><%=Team.find(team).sport_id%></span></div>
@@ -42,14 +42,51 @@
 	<div class="panel transparent opacity7">
 		<div class="panel-heading">
 			<div class="row center">
-				<a href="/my_teams/new">
+				<a href = "#" id ="sign" data-toggle="modal" data-target="#login">
 					<span class="glyphicon glyphicon-plus huge"></span>
 				</a>
 			</div>
 		</div>
 	</div>
 </div>
-<li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li>
+<!--li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li-->
+
+<div class="modal fade in" role="dialog" id= "login">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <h1>Login to Your Account</h1><br>
+	  <%= form_for(@newTeam, url:my_teams_path, class:"form-horizontal") do |f| %>
+
+		  <div class="form-group">	  
+      <%= f.label :team_name, "Team Name" %>
+      <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+
+      <%= f.label :sport_id, "Team Sport" %>
+      <%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
+		
+      <%= f.label :no_of_players, "No. of Players" %>
+      <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
+	  
+      <%= f.label :location, "Location" %>
+      <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
+	  
+	  </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close"/>
+	  <%=f.submit "Submit", class: "btn btn-primary", id: "modalButton" %>
+    <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script>
 var ids = document.querySelectorAll('[id^="cardTextParent"]').length;
@@ -63,6 +100,39 @@ for(i=1 ; i<=ids ; i++){
 			text.css("font-size", fontSize -=0.2);
 		text.css("display", "inline");
 	}
+
+function editForm(id, url){
+$(document).ready(function(){
+        $('#login').modal('show');
+});
+
+//alert("Function Called");
+$.ajax({
+        url: '/my_teams/getEditDetails',
+        type: 'GET',
+        data: { id:id, field2 : "hello2"} ,
+        contentType: 'application/json;charset=utf-8',
+		success: function (response) {
+			//alert(response["team_name"]+response["sport_id"]+response["no_of_players"]+response["location"]);
+
+			document.getElementById('team_team_name').value = response["team_name"];
+			document.getElementById('team_sport_id').value = response["sport_id"];
+			document.getElementById('team_no_of_players').value = response["no_of_players"];
+			document.getElementById('team_location').value = response["location"];
+			document.getElementById('modalButton').value = "Save Changes";
+
+			document.getElementById('modalButton').setAttribute('method',"post");
+			document.getElementById('modalButton').setAttribute('action',url);
+
+			//alert(response["location"]);
+		},
+        error: function () {
+		alert("Error");
+            //your error code
+			   }
+});
+
+}
 
 </script>
 

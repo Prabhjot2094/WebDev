@@ -35,6 +35,14 @@ class MyTeamsController < ApplicationController
 			return
 		end
 	end
+	
+	def getEditDetails
+			@team = current_user.player.teams.find(params[:id])
+			respond_to do |format|
+				format.json {render json: @team}
+			print "++++++++++++++++++++++++++++++++++++++++++++++++++"
+	end
+	end
 
 	def update
 		@team = current_user.player.teams.find(params[:id])
