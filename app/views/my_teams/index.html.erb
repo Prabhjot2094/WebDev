@@ -14,8 +14,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-9" style="padding-left:5px;padding-right:0px;">
-						<div id="cardTextParent<%=i+2%>" ><span id="cardText<%=i+2%>" style="margin:5px; font-size:25px"><%=Team.find(team).team_name%>(<%=Team.find(team).location%>)</span></div>
+					<div class="col-xs-11" style="padding-left:5px;padding-right:0px;">
+						<div id="cardTextParent<%=i+2%>" ><span id="cardText<%=i+2%>" style="margin:5px; font-size:25px"><%=Team.find(team).team_name%>(<%=Team.find(team).location.delete(' ').split(',')[0..1].join(',')%>)</span></div>
 						<%i+=3%>
 					</div>
 				</div>
@@ -51,6 +51,7 @@
 </div>
 <!--li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li-->
 
+
 <div class="modal fade in" role="dialog" id= "login">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
@@ -74,7 +75,7 @@
 				</div>
 
 				<div class="form-group">	  
-					<%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
+					<%= f.text_field :location, class: "form-control" , placeholder:"Location", list: "browser", onkeyPress:"initService(this);", autocomplete: "on"%>
 				</div>
 			</div>
 
@@ -115,8 +116,7 @@
 
 			<div class="form-group">	  
 				<%= f.label :location, "Location" %>
-				<%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
-
+				<%= f.text_field :location, class: "form-control" , placeholder:"Location", list: "browser", onkeyPress:"initService(this);", autocomplete: "on"%>
 			</div>
 		</div>
 
@@ -129,7 +129,9 @@
 </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 <script>
+
 var ids = document.querySelectorAll('[id^="cardTextParent"]').length;
 
 for(i=1 ; i<=ids ; i++){
@@ -175,8 +177,39 @@ alert("Error Opening Record");
 }
 function form_submit() {
 	document.getElementsByClassName("new_team")[1].submit();
-}    
+}
+
+
+function initService(ele) {
+
+		var displaySuggestions = function(predictions, status) {
+	
+		var dl = document.getElementById('browser');
+		if(dl!=null)
+			dl.remove();
+	
+		dl = document.createElement('datalist');
+		dl.setAttribute('id','browser');
+		ele.appendChild(dl);
+
+		if (status != google.maps.places.PlacesServiceStatus.OK) {
+			alert(status);
+			return;
+		}
+
+		predictions.forEach(function(prediction) {
+				var li = document.createElement('option');
+				li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('browser').appendChild(li);
+				});
+	};
+
+	var _location = ele.value
+	var service = new google.maps.places.AutocompleteService();
+	if(_location != null)
+	service.getQueryPredictions({ input: _location }, displaySuggestions);
+	
+}
 
 </script>
-
-
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCda0mjYGow32OasbzgbJloTXQHx3kLaNg&libraries=places&callback=initService"></script>
