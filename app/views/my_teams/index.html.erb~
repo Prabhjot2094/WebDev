@@ -52,29 +52,29 @@
 <!--li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li-->
 
 <div class="modal fade in" role="dialog" id= "login">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+		<h4 class="modal-title" id="gridSystemModalLabel"><h2>New Team</h2></h4>
       </div>
       <div class="modal-body">
-         <h1>Login to Your Account</h1><br>
 	  <%= form_for(@newTeam, url:my_teams_path , class:"form-horizontal") do |f| %>
 
-		  <div class="form-group">	  
-      <%= f.label :team_name, "Team Name" %>
+	  <div class="form-group">	  
       <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+	  </div>
 
-      <%= f.label :sport_id, "Team Sport" %>
-      <%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
-		
-      <%= f.label :no_of_players, "No. of Players" %>
+	  <div class="form-group">	  
+      <%= f.text_field :sport_id, class: "form-control", placeholder:"Sport" %>
+	  </div>
+	  
+	  <div class="form-group">	  
       <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
+	  </div>
 	  
-      <%= f.label :location, "Location" %>
+	  <div class="form-group">	  
       <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
-	  
 	  </div>
         </div>
         
@@ -89,26 +89,31 @@
 </div><!-- /.modal -->
 
 <div class="modal fade in" role="dialog" id= "update">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Update</h4>
+        <h2 class="modal-title" id="gridSystemModalLabel">Update Team</h2>
       </div>
       <div class="modal-body">
-         <h1>Login to Your Account</h1><br>
-	  <%= form_for(@newTeam, url:my_teams_path, method: :patch , class:"form-horizontal", id: "updateTeam") do |f| %>
+	  <%= form_for(@newTeam, url:my_teams_path, method: :patch , class:"form", id: "updateTeam") do |f| %>
 
 		  <div class="form-group">	  
       <%= f.label :team_name, "Team Name" %>
-      <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+	  <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+	  </div>
 
+		  <div class="form-group">	  
       <%= f.label :sport_id, "Team Sport" %>
       <%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
+	  </div>
 		
+		  <div class="form-group">	  
       <%= f.label :no_of_players, "No. of Players" %>
       <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
+	  </div>
 	  
+		  <div class="form-group">	  
       <%= f.label :location, "Location" %>
       <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
 	  
@@ -160,10 +165,9 @@ $.ajax({
 			//document.getElementById('modalButton').setAttribute('method',"post");
 			_parent.querySelector('#new_team').setAttribute('action',url);
 
-			alert(url);
 		},
         error: function () {
-		alert("Error");
+		alert("Error Opening Record");
             //your error code
 			   }
 });

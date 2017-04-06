@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	 @player = Player.new
 	 @player.user_name = params_player[:player][:user_name]
+	 @player.mobile = params_player[:player][:mobile]
 
 	 if not @player.save
 		 @player.errors.full_messages
@@ -31,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	end
 
 	def params_player
-		params.require(:user).permit(:email,:password,:password_confirmation, player: [:user_name])
+		params.require(:user).permit(:email,:password,:password_confirmation, player: [:user_name,:mobile])
 	end
   # GET /resource/edit
   # def edit

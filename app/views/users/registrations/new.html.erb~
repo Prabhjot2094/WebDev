@@ -6,29 +6,32 @@
 
 <%=f.fields_for :player do |p| %>
 	<p>
+	<div class="form-group">	
 <%= p.label :user_name %><br />
 <%= p.text_field :user_name %>
 </p>
+</div>
   <%end%>
-<div class="field">
+
+	<div class="form-group">	
 	<%= f.label :email %><br />
 	<%= f.email_field :email, autofocus: true %>
 </div>
 
-<div class="field">
+	<div class="form-group">	
 	<%= f.label :password %>
 	<% if @minimum_password_length %>
-		<em>(<%= @minimum_password_length %> charactedddddddddddrs minimum)</em>
+		<em>(<%= @minimum_password_length %> characters minimum)</em>
 <% end %><br />
 	<%= f.password_field :password, autocomplete: "off" %>
 </div>
 
-<div class="field">
+	<div class="form-group">	
 	<%= f.label :password_confirmation %><br />
 	<%= f.password_field :password_confirmation, autocomplete: "off" %>
 </div>
 
-<div class="actions">
+	<div class="form-group">	
 	<%= f.submit "Sign up" %>
 </div>
 <% end %>

@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	 @player = Player.new
 	 @player.user_name = params_player[:player][:user_name]
+	 @player.mobile = params_player[:player][:mobile]
 
 	 if not @player.save
 		 @player.errors.full_messages

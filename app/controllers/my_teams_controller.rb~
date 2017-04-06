@@ -39,7 +39,7 @@ class MyTeamsController < ApplicationController
 	def getEditDetails
 			@team = current_user.player.teams.find(params[:id])
 			respond_to do |format|
-				format.json {render json: @test}
+				format.json {render json: @team}
 			print "++++++++++++++++++++++++++++++++++++++++++++++++++"
 	end
 	end
@@ -140,10 +140,7 @@ class MyTeamsController < ApplicationController
 
 	def destroyAllRequests(request)
 		request.each do |r|
-			begin
-
-				next
-			end
+			r.destroy
 		end	
 	end
 

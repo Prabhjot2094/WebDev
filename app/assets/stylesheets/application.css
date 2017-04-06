@@ -36,3 +36,6 @@
 .white-background{
 	background-color:#ffffff;
 }
+.modal-open .modal,a{
+    outline:none!important
+}

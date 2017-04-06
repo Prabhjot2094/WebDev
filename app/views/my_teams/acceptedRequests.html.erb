@@ -8,6 +8,7 @@
 					<th>From</th>
 					<th>To</th>
 					<th>Sport</th>
+					<th>Mobile</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -16,9 +17,11 @@
 				<tr>
 					<%to_id = Team.find(f.request_to)%>
 					<%from_id = Team.find(f.request_from)%>
+					<%mobile = to_id.player.mobile%>
 				<td><%=from_id[:team_name]%></td>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=to_id[:sport_id]%></td>
+				<td><%=mobile%></td>
 				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
 			</tr>
 			<%end%>
@@ -39,6 +42,7 @@
 					<th>From</th>
 					<th>To</th>
 					<th>Sport</th>
+					<th>Mobile</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -47,9 +51,11 @@
 				<tr>
 					<%to_id = Team.find(f.request_to)%>
 					<%from_id = Team.find(f.request_from)%>
+					<%mobile = from_id.player.mobile%>
 				<td><%=from_id[:team_name]%></td>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=from_id[:sport_id]%></td>
+				<td><%=mobile%></td>
 				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-danger btn-sm"> Cancel</button></a></td>
 			</tr>
 			<%end%>
