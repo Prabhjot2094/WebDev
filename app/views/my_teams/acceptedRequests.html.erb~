@@ -1,6 +1,6 @@
 <%if !@acceptedSentRequests.empty?%>
 <div class="col-lg-6">
-	<h2>Sent Requests Accepted</h2>
+	<h2 class="custom-table-header">Sent Requests Accepted</h2>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
 			<thead class="opacity7">
@@ -8,6 +8,7 @@
 					<th>From</th>
 					<th>To</th>
 					<th>Sport</th>
+					<th>Mobile</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -16,9 +17,11 @@
 				<tr>
 					<%to_id = Team.find(f.request_to)%>
 					<%from_id = Team.find(f.request_from)%>
+					<%mobile = to_id.player.mobile%>
 				<td><%=from_id[:team_name]%></td>
 				<td><%=to_id[:team_name]%></td>
 				<td><%=to_id[:sport_id]%></td>
+				<td><%=mobile%></td>
 				<td><a href=<%=my_teams_deleteRequest_path(id: f.id)%>><button type="button" class="btn btn-danger btn-sm">Delete</button></a></td>
 			</tr>
 			<%end%>
@@ -29,8 +32,8 @@
 <%end%>
 <%if !@acceptedRecievedRequests.empty?%>
 	<div class="col-lg-6">
-		<div class="wrapper">
-		<h2>Recieved Requests Accepted</h2>
+		<div class="text-center">
+		<h2 class="custom-table-header">Recieved Requests Accepted</h2>
 		</div>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
@@ -62,5 +65,5 @@
 </div>
 <%end%>
 <%if @acceptedSentRequests.empty? and @acceptedRecievedRequests.empty?%>
-	<h3>No-one gives a fuck about your Requests !!!!!</h3>
+	<h3 class="custom-table-header text-center">No-one gives a fuck about your Requests !!!!!</h3>
 <%end%>

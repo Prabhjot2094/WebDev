@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="col-xs-9" style="padding-left:5px;padding-right:0px;">
 						<div id="cardTextParent<%=i+2%>" ><span id="cardText<%=i+2%>" style="margin:5px; font-size:25px"><%=Team.find(team).team_name%>(<%=Team.find(team).location%>)</span></div>
-					<%i+=3%>
+						<%i+=3%>
 					</div>
 				</div>
 			</a>
@@ -52,127 +52,130 @@
 <!--li><a href = "#" id ="sign" data-toggle="modal" data-target="#login"> Login/Register</a> </li-->
 
 <div class="modal fade in" role="dialog" id= "login">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-		<h4 class="modal-title" id="gridSystemModalLabel"><h2>New Team</h2></h4>
-      </div>
-      <div class="modal-body">
-	  <%= form_for(@newTeam, url:my_teams_path , class:"form-horizontal") do |f| %>
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="gridSystemModalLabel"><h2>New Team</h2></h4>
+			</div>
+			<div class="modal-body">
+				<%= form_for(@newTeam, url:my_teams_path , class:"form-horizontal") do |f| %>
 
-	  <div class="form-group">	  
-      <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
-	  </div>
+					<div class="form-group">	  
+					<%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+				</div>
 
-	  <div class="form-group">	  
-      <%= f.text_field :sport_id, class: "form-control", placeholder:"Sport" %>
-	  </div>
-	  
-	  <div class="form-group">	  
-      <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
-	  </div>
-	  
-	  <div class="form-group">	  
-      <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
-	  </div>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close"/>
-	  <%=f.submit "Submit", class: "btn btn-primary", id: "modalButton" %>
-    <% end %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+				<div class="form-group">	  
+					<%= f.text_field :sport_id, class: "form-control", placeholder:"Sport" %>
+				</div>
+
+				<div class="form-group">	  
+					<%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
+				</div>
+
+				<div class="form-group">	  
+					<%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
+				</div>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<input type="button" class="btn btn-default" data-dismiss="modal" value="Close"/>
+			<%=f.submit "Submit", class: "btn btn-primary", id: "modalButton" %>
+		<% end %>
+		</div>
+	</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <div class="modal fade in" role="dialog" id= "update">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h2 class="modal-title" id="gridSystemModalLabel">Update Team</h2>
-      </div>
-      <div class="modal-body">
-	  <%= form_for(@newTeam, url:my_teams_path, method: :patch , class:"form", id: "updateTeam") do |f| %>
+<div class="modal-dialog modal-sm" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h2 class="modal-title" id="gridSystemModalLabel">Update Team</h2>
+		</div>
+		<div class="modal-body">
+			<%= form_for(@newTeam, url:my_teams_path, method: :patch , class:"form", id: "updateTeam") do |f| %>
 
-		  <div class="form-group">	  
-      <%= f.label :team_name, "Team Name" %>
-	  <%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
-	  </div>
+				<div class="form-group">	  
+				<%= f.label :team_name, "Team Name" %>
+				<%= f.text_field :team_name, class: "form-control" , placeholder:"Team Name"%>
+			</div>
 
-		  <div class="form-group">	  
-      <%= f.label :sport_id, "Team Sport" %>
-      <%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
-	  </div>
-		
-		  <div class="form-group">	  
-      <%= f.label :no_of_players, "No. of Players" %>
-      <%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
-	  </div>
-	  
-		  <div class="form-group">	  
-      <%= f.label :location, "Location" %>
-      <%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
-	  
-	  </div>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close"/>
-	  <%=f.submit "Save Changes", class: "btn btn-primary", id: "modalButton" %>
-    <% end %>
-      </div>
-    </div><!-- /.modal-content -->
+			<div class="form-group">	  
+				<%= f.label :sport_id, "Team Sport" %>
+				<%= f.text_field :sport_id, class: "form-control", placeholder:"Team Sport" %>
+			</div>
+
+			<div class="form-group">	  
+				<%= f.label :no_of_players, "No. of Players" %>
+				<%= f.text_field :no_of_players, class: "form-control", placeholder:"No. of Players" %>
+			</div>
+
+			<div class="form-group">	  
+				<%= f.label :location, "Location" %>
+				<%= f.text_field :location, class: "form-control" , placeholder:"Location"%>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<input type="button" class="btn btn-default" data-dismiss="modal" value="Close"/>
+		<%=f.submit "Save Changes", class: "btn btn-primary", id: "modalButton" , onclick:"form_submit();"%>
+	<% end %>
+	</div>
+</div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script>
 var ids = document.querySelectorAll('[id^="cardTextParent"]').length;
 
 for(i=1 ; i<=ids ; i++){
-		var divWidth = $("#cardTextParent"+i).width();
-		var text = $("#cardText"+i);
-		var fontSize = 20;
+	var divWidth = $("#cardTextParent"+i).width();
+	var text = $("#cardText"+i);
+	var fontSize = 20;
 
-		while (text.width() > divWidth)
-			text.css("font-size", fontSize -=0.2);
-		text.css("display", "inline");
-	}
+	while (text.width() > divWidth)
+		text.css("font-size", fontSize -=0.2);
+	text.css("display", "inline");
+}
 
 function editForm(id, url){
-$(document).ready(function(){
-        $('#update').modal('show');
-});
-//alert("Function Called");
-var _parent = document.getElementById('update');
-$.ajax({
-        url: '/my_teams/getEditDetails',
-        type: 'GET',
-        data: { id:id, field2 : "hello2"} ,
-        contentType: 'application/json;charset=utf-8',
-		success: function (response) {
-			//alert(response["team_name"]+response["sport_id"]+response["no_of_players"]+response["location"]);
+	$(document).ready(function(){
+			$('#update').modal('show');
+			});
+	//alert("Function Called");
+	var _parent = document.getElementById('update');
+	$.ajax({
+url: '/my_teams/getEditDetails',
+type: 'GET',
+data: { id:id, field2 : "hello2"} ,
+contentType: 'application/json;charset=utf-8',
+success: function (response) {
+//alert(response["team_name"]+response["sport_id"]+response["no_of_players"]+response["location"]);
 
-			_parent.querySelector('#team_team_name').value = response["team_name"];
-			_parent.querySelector('#team_sport_id').value = response["sport_id"];
-			_parent.querySelector('#team_no_of_players').value = response["no_of_players"];
-			_parent.querySelector('#team_location').value = response["location"];
-			_parent.querySelector('#modalButton').value = "Save Changes";
+_parent.querySelector('#team_team_name').value = response["team_name"];
+_parent.querySelector('#team_sport_id').value = response["sport_id"];
+_parent.querySelector('#team_no_of_players').value = response["no_of_players"];
+_parent.querySelector('#team_location').value = response["location"];
+_parent.querySelector('#modalButton').value = "Save Changes";
 
-			//document.getElementById('modalButton').setAttribute('method',"post");
-			_parent.querySelector('#new_team').setAttribute('action',url);
+//document.getElementById('modalButton').setAttribute('method',"post");
+_parent.querySelector('#new_team').setAttribute('action',url);
 
-		},
-        error: function () {
-		alert("Error Opening Record");
-            //your error code
-			   }
+},
+error: function () {
+alert("Error Opening Record");
+//your error code
+	   }
 });
 
 }
+function form_submit() {
+	document.getElementsByClassName("new_team")[1].submit();
+}    
 
 </script>
 

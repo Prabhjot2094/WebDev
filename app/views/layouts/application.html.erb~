@@ -17,7 +17,7 @@ html{
 
 </head>
 <!-- #E6E6FA -->
-<body class="transparent">
+<body class="transparent" data-no-turbolink="true">
 <% if user_signed_in? %>
 	<div id="wrapper" >
 	<%=render 'layouts/adminTheme'%>
@@ -34,6 +34,7 @@ html{
 			<% content_tag :div, msg, class: "alert alert-info" %>
 		<% end %>
 		<%= render 'layouts/header'%>
+			<%= yield %>
 <%end%>
 
 

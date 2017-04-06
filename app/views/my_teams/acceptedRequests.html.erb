@@ -1,6 +1,6 @@
 <%if !@acceptedSentRequests.empty?%>
 <div class="col-lg-6">
-	<h2>Sent Requests Accepted</h2>
+	<h2 class="custom-table-header">Sent Requests Accepted</h2>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
 			<thead class="opacity7">
@@ -32,8 +32,8 @@
 <%end%>
 <%if !@acceptedRecievedRequests.empty?%>
 	<div class="col-lg-6">
-		<div class="wrapper">
-		<h2>Recieved Requests Accepted</h2>
+		<div class="text-center">
+		<h2 class="custom-table-header">Recieved Requests Accepted</h2>
 		</div>
 	<div class="table-responsive">
 		<table class="table table-hover table-striped">
@@ -65,5 +65,5 @@
 </div>
 <%end%>
 <%if @acceptedSentRequests.empty? and @acceptedRecievedRequests.empty?%>
-	<h3>No-one gives a fuck about your Requests !!!!!</h3>
+	<h3 class="custom-table-header text-center empty-header">No-one gives a fuck about your Requests !!!!!</h3>
 <%end%>
