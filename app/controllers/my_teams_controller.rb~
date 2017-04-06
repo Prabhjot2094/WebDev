@@ -91,6 +91,10 @@ class MyTeamsController < ApplicationController
 		@request.status = "0"
 
 		if @request.save
+			request_from = Team.find(@request.request_from)
+			message = "You have a new request from "+request_from.team_name+" for "+request_from.sport_id+"."
+
+			Request.send_message(Team.find(params[:req_to]).player.mobile, message)
 			redirect_to my_teams_sentRequests_path
 		else
 			redirect_to my_teams_path
@@ -101,6 +105,10 @@ class MyTeamsController < ApplicationController
 		request = Request.find(params[:id])
 
 		if request.update_attributes(status: 1)
+			request_to = Team.find(request.request_to)
+			message = "Your Request to team "+request_to.team_name+" for "+request_to.sport_id+" has been Accepted."
+
+			Request.send_message(Team.find(request.request_from).player.mobile, message)
 			redirect_to my_teams_acceptedRequests_path
 		else
 			redirect_to my_teams_recievedRequests_path
