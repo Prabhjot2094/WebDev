@@ -45,10 +45,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+	@team = current_user.player.teams
+	@team.each do |t|
+		request_to = Request.where(request_to: t.id)
+		request_from = Request.where(request_from: t.id)
 
+	destroyAllRequests(request_to)
+	destroyAllRequests(request_from)
+		end
+    super
+  end
+
+	def destroyAllRequests(request)
+		request.each do |r|
+			r.destroy
+		end	
+	end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to

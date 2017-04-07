@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
 	belongs_to :player
 
-	has_many :team_lists
+	has_many :team_lists, :dependent => :delete_all
 
 
 	DISTANCE_THRESHOLD = 500
@@ -36,7 +36,8 @@ class Team < ApplicationRecord
 		_recordsToExclude = _sentRequests+_recievedRequests
 
 		#getNearbyTeams(distanceHash, sportToBeMatched)
-		_nearbyTeams = Team.where(location: distanceHash.keys, sport_id: sportToBeMatched).where.not(player_id: playerId,id: _recordsToExclude)
+		_nearbyTeams = Team.where(location: distanceHash.keys, sport_id: sportToBeMatched)\
+			.where.not(player_id: playerId,id: _recordsToExclude)
 	end
 
 

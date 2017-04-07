@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
 	belongs_to :player
 
-	has_many :team_lists
+	has_many :team_lists, :dependent => :delete_all
 
 
 	DISTANCE_THRESHOLD = 500
