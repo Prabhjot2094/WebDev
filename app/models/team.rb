@@ -1,8 +1,10 @@
 class Team < ApplicationRecord
 	belongs_to :player
-
 	has_many :team_lists, :dependent => :delete_all
 
+	validates :team_name,:location,:sport_id,:no_of_players, presence: true
+	validates :sport_id,format: { with: /\A[a-zA-Z]+\z/,message: "only allows letters" }
+	validates :no_of_players, numericality: {only_integer:true}
 
 	DISTANCE_THRESHOLD = 500
 

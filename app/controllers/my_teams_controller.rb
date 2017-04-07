@@ -14,11 +14,11 @@ class MyTeamsController < ApplicationController
 
 		if @team.save 
 			redirect_to my_teams_path
-			flash[:success] = "Succesful"
+			flash[:success] = "New team created"
 			return
 		else
-			flash[:danger] = "Failure"
-			render 'new'
+			flash[:danger] = "Unsuccessful. Some field inputs invalid !!"
+			redirect_to my_teams_path
 		end
 	end
 
@@ -48,9 +48,11 @@ class MyTeamsController < ApplicationController
 		@team = current_user.player.teams.find(params[:id])
 
 		if @team.update_attributes(params_team)
+			flash[:success] = "Updation successful"
 			redirect_to my_teams_path
 		else
-			render 'edit'
+			flash[:danger] = "Updation Failure. Some field inputs invalid !!"
+			redirect_to my_teams_path
 		end
 	end
 

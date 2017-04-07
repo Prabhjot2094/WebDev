@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170406051947) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "request_from"
     t.string   "request_to"
     t.string   "status"

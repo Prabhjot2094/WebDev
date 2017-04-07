@@ -21,23 +21,28 @@ html{
 	<%=render 'layouts/adminTheme'%>
 	<div id="page-wrapper" style="background-color:transparent;">
 		<div class="container-fluid">
-		<% flash.each do |name, msg| %>
-				<% content_tag :div, msg, class: "alert alert-info" %>
-		<% end %>
 			<%= yield %>
 		</div>
 	</div>
 <% else %>
+	<%= render 'layouts/header'%>
+	<%= yield %>
+<%end%>
+
+
+	<% if user_signed_in? %>
+	</div>
+<%end%>
 		<% flash.each do |name, msg| %>
-			<% content_tag :div, msg, class: "alert alert-info" %>
-		<% end %>
-		<%= render 'layouts/header'%>
-			<%= yield %>
-<%end%>
+		<%= content_tag :div, msg, class: "text-center col-xs-3 alert alert-"+name, style: "opacity:0.8; position: absolute;top: 7%; left: 40%;"%>
+	<% end %>
 
-
-<% if user_signed_in? %>
-</div>
-<%end%>
+<script>
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 2000);
+</script>
 </body>
 </html>
